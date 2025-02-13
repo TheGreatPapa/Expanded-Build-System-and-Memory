@@ -97,7 +97,7 @@ build: $(TARGET).out $(TARGET).asm
 
 .PHONY: compile-all
 compile-all: $(OBJS)
-	$(CC) $(INCLUDES) $(OBJS) $(CFLAGS) -o src/$(TARGET).o
+	$(CC) $(INCLUDES) $(OBJS) $(CFLAGS) -o $(TARGET).o
 
 $(TARGET).out: $(OBJS) $(DEPS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) -o $@ $(OBJS)
@@ -105,4 +105,4 @@ $(TARGET).out: $(OBJS) $(DEPS)
 
 .PHONY: clean
 clean:
-	rm -f $(PREPRS) $(DEPS) $(ASMS) $(OBJS) src/$(TARGET).out $(TARGET).map $(TARGET).asm
+	rm -f $(PREPRS) $(DEPS) $(ASMS) $(OBJS) $(TARGET).out $(TARGET).map $(TARGET).asm

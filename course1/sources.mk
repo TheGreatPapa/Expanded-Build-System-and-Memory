@@ -16,7 +16,11 @@ ifeq ($(PLATFORM),HOST)
 # Add your Source files to this variable
 SOURCES = 			\
 			src/main.c 	\
-			src/memory.c
+			src/memory.c \
+			src/data.c	\
+			src/stats.c	\
+			src/course1.c
+			
 # Add your include paths to this variable
 INCLUDES = -I./include/common
 endif
@@ -37,6 +41,8 @@ INCLUDES = 			\
 			-I./include/CMSIS	\
 			-I./include/msp432
 endif		
+
+
 
 
 

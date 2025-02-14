@@ -26,6 +26,8 @@
 # Platform Overrides:
 #      PLATFORM - (HOST, MSP432)
 #	   TARGET - The output name of the target (c1m2 is the default)
+#	   TIMESW - Enables compile time switch (COURSE1, VERBOSE)
+#	   
 #------------------------------------------------------------------------------
 # Platform Overrides
 PLATFORM = HOST
@@ -67,8 +69,14 @@ LDFLAGS = -Wl,-Map=$(TARGET).map
 endif
 
 # Compiler Flags and Defines
- 
+ifeq ($(TIMESW),VERBOSE)
+CFLAGS = -Wall -Werror -g -O0 -std=c99 -D$(PLATFORM) $(ARM_FLAGS) -D$(TIMESW)
+else ifeq ($(TIMESW),COURSE1)
+CFLAGS = -Wall -Werror -g -O0 -std=c99 -D$(PLATFORM) $(ARM_FLAGS) -D$(TIMESW)
+else 
 CFLAGS = -Wall -Werror -g -O0 -std=c99 -D$(PLATFORM) $(ARM_FLAGS)
+endif
+
 CPPFLAGS = -E
 
 OBJS = $(SOURCES:.c=.o)
